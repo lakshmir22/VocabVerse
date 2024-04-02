@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;   
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    font-family: 'Jost' , sans-serif;
+    background: linear-gradient(to bottom, #0f0c29,#302b63, #24243e);
+}
+
+.main{
+    width: 350px;
+    height: 500px;
+    background: rgb(136, 83, 156);
+    overflow: hidden;
+    background: url('https://media.istockphoto.com/id/1207437769/vector/purple-abstract-technology-background.jpg?s=612x612&w=0&k=20&c=SR8um022tGZC3oS4RWOveWrefLkcmoUYdpG3AwroGHE=') no-repeat center/cover;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+}
+
+#chk{
+    display: none;
+}
+
+.signup{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+label{
+    color: #fff;
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out; 
+}
+
+input{
+    width:60%;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+button{
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: white;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: solid black;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+button:hover{ 
+
+    background-color: #848a89;
+}
+.login{
+    height: 460px;
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(-180px);
+    transition: .8s ease-in-out;
+}
+.login label{
+    color: #573b8a;
+    transform: scale(.6);
+}
+#chk:checked ~ .login{
+    transform: translateY(-500px);
+}
+#chk:checked ~ .login label{
+    transform: scale(1);
+}
+#chk:checked ~ .signup label{
+    transform: scale(.6);
+}
+.main .remember-forgot{
+    display: flex;
+    justify-content: left;
+    font-size: 9px;
+    margin: -10px 0 10px;
+}
+.remember-forgot label input{
+    accent-color: #573b8a;
+    margin-left: 2px;
+}
+.remember-forgot a{
+    color: #573b8a;
+    margin-left: 2px;
+    text-decoration: none;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+footer{
+    text-align:end;
+}
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .quiz-nav button {
+    background-color: #eeeaf2;
+    color: #352e2e;
+    border: none;
+    padding: 10px 50px;
+    margin: 20px ;
+    cursor: pointer;
+  }
+
+  .quiz-nav button:hover {
+    background-color: #6a6e73;
+  }

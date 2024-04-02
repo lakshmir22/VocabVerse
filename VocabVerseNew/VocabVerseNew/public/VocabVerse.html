@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocabVerse</title>
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <style>
+        .gallery-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Style for the image slider */
+        .gallery-slider {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s;
+        }
+
+        .gallery-slide {
+            flex: 0 0 100%;
+            width: 100%;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Style for the bullet navigation */
+        .gallery-bullets {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .gallery-bullet {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        /* Active bullet style */
+        .active-bullet {
+            background: #555;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: center;
+            background-color: #333; /* Dark background color for the features section */
+            padding: 40px 0;
+        }
+
+        .feature {
+            text-align: center;
+            margin: 0 20px;
+        }
+        .feature-icon {
+            background-color: #573b8a; /* Background color for the circular icon */
+            width: 100px; /* Set the width and height to create a perfect circle */
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            overflow: hidden; /* Add this line to hide image overflow */
+        }
+
+        .feature-icon img {
+            width: 100%; /* Adjust to 100% to fit the circular container */
+            height: auto; /* Maintain the aspect ratio */
+            border-radius: 50%; /* Make the image itself circular */
+        }
+        .feature-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #aaa;
+        }
+        #feedback {
+    background-color: #000; /* Black background color */
+    color: #fff; /* White text color */
+    padding: 40px 0;
+    text-align: center;
+}
+
+#feedback h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style for the form */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #fff; /* White border for input fields */
+    border-radius: 5px;
+    background-color: #333; /* Dark gray background for input fields */
+    color: #fff; /* White text color for input fields */
+}
+
+textarea {
+    height: 120px;
+}
+
+button {
+    background-color: #573b8a; /* Background color for the submit button */
+    color: #fff; /* Text color for the button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #422d69; /* Darker color on hover */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VocabVerse: Learn & Quiz!</h1>
+    </header>
+    <nav>
+        <Center>
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a href="quizz/go2quiz.html">Go to Quiz</a>
+            <a href="content/contents.html">Contents Available</a>
+            <a href="video/videos.html">Videos</a>
+            <a href="api/texttospeechapi.html">Learn Pronunciation</a>
+            <a href="aboutus/aboutus.html">About Us</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Signup</a>
+            <a href="login.html">Logout</a>
+        </div></Center>
+    </nav>
+    <main>
+        <div class="gallery-container">
+            <div class="gallery-slider">
+                <div class="gallery-slide">
+                    <video>
+                        <source src="images/home1.mp4" type="video/mp4">
+    
+                    </video>
+                </div>
+                <div class="gallery-slide">
+                    <video>
+                        <source src="images/home2.mp4" type="video/mp4">
+                    
+                    </video>
+                </div>
+                <div class="gallery-slide">
+                    <video>
+                        <source src="images/home3.mp4" type="video/mp4">
+        
+                    </video>
+                </div>
+                
+            </div>
+            <div class="gallery-bullets">
+                <span class="gallery-bullet"></span>
+                <span class="gallery-bullet"></span>
+                <span class="gallery-bullet"></span>
+            </div>
+        </div>
+    
+        <script>
+            // JavaScript for image slider
+            const slider = document.querySelector('.gallery-slider');
+            const slides = document.querySelectorAll('.gallery-slide');
+            const bullets = document.querySelectorAll('.gallery-bullet');
+    
+            let slideIndex = 0;
+    
+            function showSlide(index) {
+                slider.style.transform = `translateX(-${index * 100}%)`;
+                bullets.forEach((bullet, i) => {
+                    if (i === index) {
+                        bullet.classList.add('active-bullet');
+                    } else {
+                        bullet.classList.remove('active-bullet');
+                    }
+                });
+            }
+    
+            function nextSlide() {
+                slideIndex = (slideIndex + 1) % slides.length;
+                showSlide(slideIndex);
+            }
+    
+            function prevSlide() {
+                slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+                showSlide(slideIndex);
+            }
+    
+            bullets.forEach((bullet, i) => {
+                bullet.addEventListener('click', () => showSlide(i));
+            });
+    
+            setInterval(nextSlide, 3000); // Auto slide every 5 seconds
+        </script>
+         <section id="vision" class="section">
+            <h2>Our Vision</h2>
+            <div class="image-container">
+                <img src="images/vision-image.jpg" alt="Vision Image">
+                <p>
+                     Our vision is to empower individuals from diverse linguistic backgrounds to achieve language fluency and effective communication through innovative, user-friendly, and engaging learning solutions.
+                </p>
+            </div>
+        </section>
+        </section>
+        <section id="mission" class="section">
+            <h2>Our Mission</h2>
+            <div class="image-container">
+                <img src="images/mission-image.jpg" alt="Mission Image">
+                <p>
+                     Our mission is to provide accessible and effective language learning tools, fostering linguistic proficiency and confidence in learners, while promoting inclusivity and cultural exchange in an interconnected world.
+                </p>
+            </div>
+        </section>
+        <section id="issue" class="section">
+            <h2>The Issue</h2>
+            <div class="image-container">
+                <img src="images/issue-image.jpg" alt="Issue Image">
+                <p>
+                     The issue at hand is the challenging journey non-English background students face in becoming fluent English speakers, hindering effective communication and educational opportunities.
+                </p>
+            </div>
+        </section>
+        <div class="features-container">
+            <div class="feature">
+                <div class="feature-icon">
+                    <img src="images/feature1.jpg" alt="Feature 1">
+                </div>
+                <div class="feature-title">Content available in <br>Digital form</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <img src="images/feature2.jpg" alt="Feature 2">
+                </div>
+                <div class="feature-title">Level wise Quizzes</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <img src="images/feature3.jpg" alt="Feature 3">
+                </div>
+                <div class="feature-title">Audio Learning</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <img src="images/feature4.jpg" alt="Feature 4">
+                </div>
+                <div class="feature-title">Visual/Video Learning</div>
+            </div>
+        </div>
+        <section id="feedback" class="section">
+            <h2>Feedback</h2>
+            <form>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+        
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </section>
+
+    </main>
+    <footer>
+        <center><p>&copy; 2023 VocabVerse: Learn and Quiz. All rights reserved.</p>
+    </center></footer>
+</body>
+</html>
